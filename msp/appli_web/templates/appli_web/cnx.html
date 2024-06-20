@@ -1,0 +1,15 @@
+{% extends 'appli_web/head.html' %}
+
+{% block content %}
+    <form>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="ici">
+        <label for="floatingInput">email</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="ici">
+        <label for="floatingPassword">mot de passe</label>
+      </div>
+      <input type ="submit"  name="connexion" value="connexion" class="btn btn-primary w-100 py-2" />
+    </form>
+{% endblock %}
