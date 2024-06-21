@@ -1,7 +1,7 @@
 from django import forms # type: ignore
 class contact_us (forms.Form):
    name=forms.CharField(required=False) 
-   email=forms.EmailField() 
+   email=forms.EmailField()
    message=forms.CharField(max_length=100)
 #FORMULAIRE DE MA BASE DE DONNEE
 #from django.forms import ModelForm # type: ignore # import pour mon modele form

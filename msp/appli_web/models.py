@@ -331,8 +331,30 @@ class pays(models.Model):
     nompays=models.fields.CharField(max_length=100)
     def __str__(self):
         return f'{self.idpays} {self.nompays}'
-
-
+    
+    
+class chu(models.Model):
+    numchu=models.fields.AutoField(primary_key=True)
+    nomchu=models.fields.CharField(max_length=100)
+    datecreation=models.fields.DateField()
+    pays=models.ForeignKey(pays, on_delete=models.CASCADE)
+    def __str__(self):
+        return f'{self.numchu} {self.nomchu} {self.datecreation} {self.pays}'  
+    
+    
+    
+class service(models.Model):
+    refservice=models.fields.AutoField(primary_key=True)
+    class typeservice(models.TextChoices):
+        gastro_enterologie="gastro-entérologie"
+        chirurgie="chirurgie"
+    nomservice=models.fields.CharField(choices=typeservice.choices, max_length=100)
+    date= models.fields.DateTimeField(default=datetime.now)                                                                                
+    chu=models.ForeignKey(chu, on_delete=models.CASCADE)
+    def __str__(self):
+        return f'{self.refservice} {self.nomservice} {self.date} {self.chu}' 
+    
+   
    
 class type_personnel_soignant(models.Model):
     idpersoignant=models.fields.AutoField(primary_key=True)
@@ -340,7 +362,50 @@ class type_personnel_soignant(models.Model):
     date= models.fields.DateTimeField(default=datetime.now)                                                                                
     def __str__(self):
         return f'{self.idpersoignant} {self.nompersog} {self.date}'
-
+    
+    
+    
+class personnel_soignant(models.Model):
+    refpersoignant=models.fields.AutoField(primary_key=True)
+    mdp=models.fields.CharField(max_length=253)
+    nom=models.fields.CharField(max_length=100)
+    contact=models.fields.PositiveIntegerField(null=False)
+    email=models.fields.EmailField(max_length = 254)
+    date= models.fields.DateTimeField(default=datetime.now)                                                                                
+    service=models.ForeignKey(service, on_delete=models.CASCADE)
+    type_personnel_soignant=models.ForeignKey(type_personnel_soignant, on_delete=models.CASCADE)
+    def __str__(self):
+        return f'{self.refpersoignant} {self.mdp} {self.nom} {self.contact} {self.date} {self.service} {self.type_personnel_soignant}'     
+    
+class consultation(models.Model): #modifie
+    Numconsulta=models.fields.AutoField(primary_key=True)
+    motifdeconsultation=models.fields.CharField(max_length=254)
+    prescripteur_consultation=models.fields.CharField(max_length=100)
+    debut_signe=models.fields.CharField(max_length=100)
+    signe_digestifs=models.fields.CharField(max_length=100)
+    signe_extra_digestif=models.fields.CharField(max_length=100)
+    signe_asso_gene=models.fields.CharField(max_length=100)
+    nombredeverre_alcool=models.fields.IntegerField(null=True)
+    nombrepaquettabac=models.fields.IntegerField(null=True)
+    medoc_en_cours=models.fields.CharField(max_length=253)
+    prise_therap_tarditionnelle=models.fields.CharField(max_length=10)
+    MAYBECHOICE=(
+        ('o','oui'),
+        ('n','non'),
+    )
+    aghbs=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
+    acanti_vhc=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
+    acanti_vhd=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
+    serologie_retrovi=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
+    transaminase=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
+    histoiredemaladie=models.fields.CharField(max_length=254)
+    date= models.fields.DateTimeField(default=datetime.now)                                                                                
+    resultat=models.fields.CharField(max_length=254)
+    renseignementclinic=models.fields.CharField(max_length=254)
+    patient=models.ForeignKey(patient, on_delete=models.CASCADE,null=False) 
+    personnel_soignant=models.ForeignKey(personnel_soignant, on_delete=models.CASCADE)
+    def __str__(self):
+        return f'{self.Numconsulta} {self.motifdeconsultation} {self.prescripteur_consultation} {self.debut_signe} {self.signe_digestifs} {self.signe_extra_digestif} {self.signe_asso_gene} {self.nombredeverre_alcool} {self.nombrepaquettabac} {self.medoc_en_cours} {self.prise_therap_tarditionnelle} {self.aghbs} {self.acanti_vhc} {self.acanti_vhd} {self.serologie_retrovi} {self.transaminase} {self.histoiredemaladie} {self.date} {self.resultat} {self.renseignementclinic} {self.patient}  {self.personnel_soignant} '
    
 class hospitalisation(models.Model):
     idhospitalisation=models.fields.AutoField(primary_key=True)
@@ -348,9 +413,10 @@ class hospitalisation(models.Model):
         gastro_enterologie="gastro-entérologie"
         chirurgie="chirurgie"
     service=models.fields.CharField(choices=enum.choices, max_length=100)
-    datehospitalisation= models.fields.DateTimeField(default=datetime.now)                                                                                
+    datehospitalisation= models.fields.DateTimeField(default=datetime.now)    
+    consultation=models.ForeignKey(consultation, on_delete=models.CASCADE)                                                                             
     def __str__(self):
-        return f'{self.idhospitalisation} {self.service} {self.datehospitalisation}'
+        return f'{self.idhospitalisation} {self.service} {self.datehospitalisation} {self.consultation}'
 
    
 class categorie(models.Model):
@@ -399,43 +465,7 @@ class medicament(models.Model):
 #fin class sans clé secondaire
 
 #debut class avec clé secondaire
-class chu(models.Model):
-    numchu=models.fields.AutoField(primary_key=True)
-    nomchu=models.fields.CharField(max_length=100)
-    datecreation=models.fields.DateField()
-    pays=models.ForeignKey(pays, on_delete=models.CASCADE)
-    def __str__(self):
-        return f'{self.numchu} {self.nomchu} {self.datecreation} {self.pays}' 
-    
-    
-    
-class service(models.Model):
-    refservice=models.fields.AutoField(primary_key=True)
-    class typeservice(models.TextChoices):
-        gastro_enterologie="gastro-entérologie"
-        chirurgie="chirurgie"
-    nomservice=models.fields.CharField(choices=typeservice.choices, max_length=100)
-    date= models.fields.DateTimeField(default=datetime.now)                                                                                
-    chu=models.ForeignKey(chu, on_delete=models.CASCADE)
-    def __str__(self):
-        return f'{self.refservice} {self.nomservice} {self.date} {self.chu}' 
-    
-    
-    
-class personnel_soignant(models.Model):
-    refpersoignant=models.fields.AutoField(primary_key=True)
-    mdp=models.fields.CharField(max_length=253)
-    nom=models.fields.CharField(max_length=100)
-    contact=models.fields.PositiveIntegerField(null=False)
-    email=models.fields.EmailField(max_length = 254)
-    date= models.fields.DateTimeField(default=datetime.now)                                                                                
-    service=models.ForeignKey(service, on_delete=models.CASCADE)
-    type_personnel_soignant=models.ForeignKey(type_personnel_soignant, on_delete=models.CASCADE)
-    def __str__(self):
-        return f'{self.refpersoignant} {self.mdp} {self.nom} {self.contact} {self.date} {self.service} {self.type_personnel_soignant}' 
-    
-    
-    
+  
 class constante(models.Model):
     refconst=models.fields.AutoField(primary_key=True)
     poids=models.fields.CharField(max_length=30)
@@ -445,39 +475,6 @@ class constante(models.Model):
     def __str__(self):
         return f'{self.refconst} {self.poids} {self.taille} {self.temperature} {self.patient}'
     
-
-
-    
-class consultation(models.Model): #modifie
-    Numconsulta=models.fields.AutoField(primary_key=True)
-    motifdeconsultation=models.fields.CharField(max_length=254)
-    prescripteur_consultation=models.fields.CharField(max_length=100)
-    debut_signe=models.fields.CharField(max_length=100)
-    signe_digestifs=models.fields.CharField(max_length=100)
-    signe_extra_digestif=models.fields.CharField(max_length=100)
-    signe_asso_gene=models.fields.CharField(max_length=100)
-    nombredeverre_alcool=models.fields.IntegerField(null=True)
-    nombrepaquettabac=models.fields.IntegerField(null=True)
-    medoc_en_cours=models.fields.CharField(max_length=253)
-    prise_therap_tarditionnelle=models.fields.CharField(max_length=10)
-    MAYBECHOICE=(
-        ('o','oui'),
-        ('n','non'),
-    )
-    aghbs=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
-    acanti_vhc=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
-    acanti_vhd=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
-    serologie_retrovi=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
-    transaminase=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
-    histoiredemaladie=models.fields.CharField(max_length=254)
-    date= models.fields.DateTimeField(default=datetime.now)                                                                                
-    resultat=models.fields.CharField(max_length=254)
-    renseignementclinic=models.fields.CharField(max_length=254)
-    patient=models.ForeignKey(patient, on_delete=models.CASCADE,null=False) 
-    hospitalisation=models.ForeignKey(hospitalisation, on_delete=models.CASCADE) 
-    personnel_soignant=models.ForeignKey(personnel_soignant, on_delete=models.CASCADE)
-    def __str__(self):
-        return f'{self.Numconsulta} {self.motifdeconsultation} {self.prescripteur_consultation} {self.debut_signe} {self.signe_digestifs} {self.signe_extra_digestif} {self.signe_asso_gene} {self.nombredeverre_alcool} {self.nombrepaquettabac} {self.medoc_en_cours} {self.prise_therap_tarditionnelle} {self.aghbs} {self.acanti_vhc} {self.acanti_vhd} {self.serologie_retrovi} {self.transaminase} {self.histoiredemaladie} {self.date} {self.resultat} {self.renseignementclinic} {self.patient} {self.hospitalisation} {self.personnel_soignant} '
 
 class diagnostique(models.Model):
     iddiag=models.fields.AutoField(primary_key=True)
@@ -517,6 +514,65 @@ class bilan_imagerie(models.Model):
 
 class bilan_biologique(models.Model):
     numbilanbio=models.fields.AutoField(primary_key=True)
+    class choix(models.TextChoices):
+            AgHBs  			
+            Ac anti HBs 		
+            Ac anti HBe 		
+            Ag HBe 			
+            Ac antiHBc totaux 	
+            IgM anti HBc 		
+            Ac anti VHC 		
+            Si positif, préciser le génotype 
+            Ac anti VHD 		
+            IgM anti VHE 		
+            IgG anti VHE 		
+            Sérologie rétrovirale 
+            AgHBs quantitatif
+            Charge virale quantitative 
+            VHB 
+            Log
+            VHC
+            Log 
+            VHD 
+            Log
+            VHE
+            Log 
+            Bilan hépatique
+            Transaminase
+            PAL 
+            BT
+            Gamma 
+            Albumine
+            TP% 
+            INR 
+            Facteur V% 
+            Evaluation fibrose hépatique
+            PBH 	
+            Résultats Score Métavir 
+            Score Ishak 
+            Autres lésion
+            Actitest* fibrotest
+            Activité (×100) 
+            Fibrose (×100) 
+            Fibromètre 
+            Fibroscan (kPa) 
+            IQR (×100) 
+            Autre marqueur non invasif de fibrose 
+            Valeur  
+            AFP 
+            Hémogramme 	
+            Plaquettes 
+            Globules blancs
+            PNN 
+            Hémoglobine
+            Test de grossesse 
+            Glycémie à jeun 
+            Triglycérides
+            Cholestérol T
+            Auto anticorps 
+            Ferritinémie 
+
+    type_examan=
     date= models.fields.DateTimeField(default=datetime.now)                                                                                
     consultation=models.ForeignKey(consultation, on_delete=models.CASCADE)
     def __str__(self):

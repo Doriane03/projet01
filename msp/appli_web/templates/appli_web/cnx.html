@@ -1,15 +1,17 @@
 {% extends 'appli_web/head.html' %}
 
 {% block content %}
-    <form>
-      <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="ici">
-        <label for="floatingInput">email</label>
+
+<form class="form-signin">
+   <fieldset>
+       <div class="form-label">
+             <label for="email">email</label><input type="email" id="email" class="form-control" placeholder="ici"/>
       </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="ici">
-        <label for="floatingPassword">mot de passe</label>
+      <div class="form-label">
+              <label for="mdp">mot de passe</label><input type="password"  id="mdp" class="form-control" placeholder="ici"/>
       </div>
-      <input type ="submit"  name="connexion" value="connexion" class="btn btn-primary w-100 py-2" />
-    </form>
+    <input type ="submit"  name="connexion" value="connexion" />
+  </fieldset>
+
+</form>
 {% endblock %}

@@ -1,78 +1,74 @@
-*, ::before, ::after{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*, ::before ,::after{
+    margin: 0px ;
+    padding: 0px ;
+    box-sizing:border-box;
 }
-
-body{
-    display:flex;
-    flex-direction: column;
-    background-color: #222;
-}
-html, body{
+body,html{
     height: 100%;
 }
+body{
+    background-color: #222;
+}
 header{
-    height:10%;
-    background-color:hsl(203,92%,75%);
     text-align: center;
     text-transform:uppercase;
     font-size: 50px;
 }
-
-article{
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    
-} 
-
-
-.content{
-    display: flex;
-    flex-grow: 1;
-    background-image: url(chu2.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-
-footer{
-    background-color: beige;
-    text-align: center;
-    padding:10px;
-    width: 100%;
-}
 .div0{
-padding: 0 30px;
-}
-.div1{
-    float:left;
-    width:99px;
-}
-.div2{
-    float:right;
-    width:99px;
+    overflow: hidden;
+    padding: 0 30px;
+    margin-bottom: 4px;
 }
 
-.form-signin {
-    max-width:330px;
-    padding: 1px;
+fieldset{
+        border: 1px solid black;
+        width: 500px;
+}
+form{
+    background-color: darkturquoise;
+    width: 500px;
+}
+.image {
+    background-image: url("chu2.jpg");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 0.9;
   }
-  
-.form-signin .form-floating:focus-within {
-    z-index:1;
+  .text {
+    color: #eeeeee;
+    font-weight: bold;
+    border: 3px solid #cccccc;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 50%;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-  
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  
 .form-signin input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    max-width: 330px;
+    padding: 1rem;
+  }
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    max-width: 330px;
+    padding: 1rem;
 }
+
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+  }
