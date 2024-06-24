@@ -1,0 +1,10 @@
+{% extends 'appli_web/head.html' %}
+
+{% block content %}
+<h1>{{ listing.title }}</h1>
+<ul>
+ <li> id: {{listing.title}} </li>
+</ul>
+
+<a href="{% url 'listing-list' %}">retour</a>
+{% endblock %}

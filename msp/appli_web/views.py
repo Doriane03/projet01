@@ -81,12 +81,15 @@ def connexion(request):
         email=request.POST['email']
         mdp=request.POST['mdp']
         print(email) 
-        return render(request,'appli_web/cnx.html')
-    
+        print(mdp)
+        user = authenticate(request, email=email, mdp=mdp)
+        if user is not None:
+            login (request,user)
+            return redirect('')
+            print('oui')
+        
     return render(request,'appli_web/cnx.html')
 #fin
-def template(request):
-    return render(request,'appli_web/template.html')
 def test(request):
     return render(request,'appli_web/template.html')
 #fin

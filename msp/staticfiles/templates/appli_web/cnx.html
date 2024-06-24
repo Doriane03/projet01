@@ -1,0 +1,21 @@
+{% extends 'appli_web/head.html' %}
+{% block content %}
+
+{% if messages %}
+<ul>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<center><form method="post" action="{% url 'connexion' %}" >
+    {% csrf_token %}
+    <fieldset>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email" name="email"/>
+            <input type="password" class="form-control" id="password" placeholder="Password" name="mdp"/>
+            <input type="submit"  name="connexion"  value="connexion" class="btn btn-primary"/>
+            <a href="#">mot de passe oublié?</a>
+    </fieldset>
+</form>
+</center>
+{% endblock %}
