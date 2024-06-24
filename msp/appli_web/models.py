@@ -514,65 +514,6 @@ class bilan_imagerie(models.Model):
 
 class bilan_biologique(models.Model):
     numbilanbio=models.fields.AutoField(primary_key=True)
-    class choix(models.TextChoices):
-            AgHBs  			
-            Ac anti HBs 		
-            Ac anti HBe 		
-            Ag HBe 			
-            Ac antiHBc totaux 	
-            IgM anti HBc 		
-            Ac anti VHC 		
-            Si positif, préciser le génotype 
-            Ac anti VHD 		
-            IgM anti VHE 		
-            IgG anti VHE 		
-            Sérologie rétrovirale 
-            AgHBs quantitatif
-            Charge virale quantitative 
-            VHB 
-            Log
-            VHC
-            Log 
-            VHD 
-            Log
-            VHE
-            Log 
-            Bilan hépatique
-            Transaminase
-            PAL 
-            BT
-            Gamma 
-            Albumine
-            TP% 
-            INR 
-            Facteur V% 
-            Evaluation fibrose hépatique
-            PBH 	
-            Résultats Score Métavir 
-            Score Ishak 
-            Autres lésion
-            Actitest* fibrotest
-            Activité (×100) 
-            Fibrose (×100) 
-            Fibromètre 
-            Fibroscan (kPa) 
-            IQR (×100) 
-            Autre marqueur non invasif de fibrose 
-            Valeur  
-            AFP 
-            Hémogramme 	
-            Plaquettes 
-            Globules blancs
-            PNN 
-            Hémoglobine
-            Test de grossesse 
-            Glycémie à jeun 
-            Triglycérides
-            Cholestérol T
-            Auto anticorps 
-            Ferritinémie 
-
-    type_examan=
     date= models.fields.DateTimeField(default=datetime.now)                                                                                
     consultation=models.ForeignKey(consultation, on_delete=models.CASCADE)
     def __str__(self):

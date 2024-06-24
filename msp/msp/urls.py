@@ -23,8 +23,10 @@ urlpatterns = [
     path('listings/',views.listing_list,name='listing-list'),
     path('listings/<int:id>/',views.listing_details, name='listing-details'),
     path ('contact/',views.contact,name='contact'),
+     path ('test/',views.test),
     #pour ma bd
-    path ('connexion/',views.cnx,name='connexion'),
+    path ('connexion/',views.connexion,name='connexion'),
+    path ('template/',views.template,name='template'),
     #fin
     
 ]

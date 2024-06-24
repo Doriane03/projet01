@@ -4,6 +4,9 @@ from appli_web.models  import band # type: ignore
 from appli_web.models  import listing  # type: ignore
 from appli_web.forms import contact_us # type: ignore
 from django.core.mail import send_mail # type: ignore
+from django.shortcuts import render,redirect # type: ignore
+from django.contrib.auth import  login , logout, authenticate # type: ignore
+from django.contrib import messages # type: ignore
 
 #import des class de ma bd
 from .models import ordonnancemedicament
@@ -71,8 +74,21 @@ def contact(request):
     return render(request,'appli_web/contact.html',context={'form':form})
 #pour ma bd
 
-def cnx(request):
-    #form=personnel_soignantForm() #pour afficher un formulaire modele
-    form=cnx_form(request.POST)
-    return render(request,'appli_web/cnx.html', context={'form':form})
+def connexion(request):
+       #form=personnel_soignantForm() #pour afficher un formulaire modele
+    
+    if  request.method =='POST' :
+        if 'connexion' in request.POST:
+            email=request.POST['email']
+            mdp=request.POST['mdp']
+            print(email) 
+    return render(request,'appli_web/cnx.html')
+#fin
+def template(request):
+    return render(request,'appli_web/template.html')
+def test(request):
+    return render(request,'appli_web/template.html')
+#fin
+def test(request):
+    return render(request,'appli_web/template.html')
 #fin
