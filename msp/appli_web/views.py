@@ -78,10 +78,11 @@ def connexion(request):
        #form=personnel_soignantForm() #pour afficher un formulaire modele
     
     if  request.method =='POST' :
-        if 'connexion' in request.POST:
-            email=request.POST['email']
-            mdp=request.POST['mdp']
-            print(email) 
+        email=request.POST['email']
+        mdp=request.POST['mdp']
+        print(email) 
+        return render(request,'appli_web/cnx.html')
+    
     return render(request,'appli_web/cnx.html')
 #fin
 def template(request):

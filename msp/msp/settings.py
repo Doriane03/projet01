@@ -12,23 +12,23 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from pathlib import Path
-from decouple import config # type: ignore
+import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-lf4@t0jrz1am7ojckx_9^-8a)c#m)al8fxlg22v@$fw)ya7hx-'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
+SECRET_KEY = env("SECRET_KEY")
+DEBUG = env("DEBUG")
+ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_ORIGINS = env("ALLOWED_ORIGINS").split(" ")
+CSRF_TRUSTED_ORIGINS = ALLOWED_ORIGINS.copy()
+BASE_URL = env("BASE_URL")
+CRSF_COOKIE_SECURE = int(env("CRSF_COOKIE_SECURE", default=0))
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'appli_web',
-    'bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -78,12 +77,12 @@ WSGI_APPLICATION = 'msp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD':config('PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': '5432'
+        'ENGINE': env('DB_ENGINE'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD':env('PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT':env('DB_PORT'),
     }
 }
 
