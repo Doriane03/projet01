@@ -1,8 +1,8 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,16 +15,16 @@
         <title>Connect - Responsive Admin Dashboard Template</title>
 
         <!-- Styles -->
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap"  rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-        <link href="{% static 'appli_web/assets/css/bootstrap.min.css' %}" rel="stylesheet">
-        <link href="{% static 'appli_web/assets/css/all.min.css' %}" rel="stylesheet">
+        <link href="{% static 'appli_web/assets/plugins/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+        <link href="{% static 'appli_web/assets/plugins/font-awesome/css/all.min.css'%}" rel="stylesheet">
 
       
         <!-- Theme Styles -->
         <link href="{% static 'appli_web/assets/css/connect.min.css' %}" rel="stylesheet">
-        <link href="{% static 'appli_web/assets/css/admin2.css' %}" rel="stylesheet">
+        <link href="{% static 'appli_web/assets/css/admin3.css' %}" rel="stylesheet">
         <link href="{% static 'appli_web/assets/css/dark_theme.css' %}" rel="stylesheet">
         <link href="{% static 'appli_web/assets/css/custom.css' %}" rel="stylesheet">
 
@@ -34,40 +34,37 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-    </head>
-    <body class="auth-page sign-in">
 
+    <body>
         <div class="connect-container align-content-stretch d-flex flex-wrap">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <div class="auth-form">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="logo-box"><a href="#" class="logo-text">connexion</a></div>
-                                    <form>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" id="password" placeholder="Password">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-block btn-submit">Sign In</button>
-                                        <div class="auth-options">
-                                            <a href="#" class="forgot-link">mot de passe oublié?</a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 d-none d-lg-block d-xl-block">
-                        <div class="auth-image"></div>
-                    </div>
+            <div class="page-sidebar">
+                <div class="logo-box"><a href="#" class="logo-text">NOM</a><a href="#" id="sidebar-close"></a> <a href="#" id="sidebar-state"></a></div>
+                <div class="page-sidebar-inner slimscroll">
+                    <ul class="accordion-menu">
+                        <li>
+                            <a href="{% url 'create_folder' %}" class="active"></i>CREER DOSSIER PATIENT</a>
+                        </li>
+                        <li>
+                            <a href="#">RENDEZ-VOUS</a>
+                        </li>
+                        <li>
+                            <a href="#">MEDECIN DISPONIBLE</a>
+                        </li>
+                        <li>
+                            <a href="#">DECONNEXION</a>
+                        </li>
+                        <li>
+                            <a href="#">RECHERCHER UN DOSSIER PATTIENT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="page-container">
+                <div class="page-header">
+                    {% block tempcontenu %} {% endblock %}
                 </div>
             </div>
         </div>
-        
         <!-- Javascripts -->
         <script src="{% static 'appli_web/assets/css/jquery-3.4.1.min.js' %} "></script>
         <script src="{% static 'appli_web/assets/css/popper.min.js' %}"></script>

@@ -1,5 +1,5 @@
-{% extends 'appli_web/head.html' %}
-{% block content %}
+{% extends 'appli_web/template.html' %}
+{% block tempcontenu %}
 <center><form method="post" action="{% url 'connexion' %}" >
     {% csrf_token %}
     <fieldset>

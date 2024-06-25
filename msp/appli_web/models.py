@@ -379,16 +379,16 @@ class personnel_soignant(models.Model):
     
 class consultation(models.Model): #modifie
     Numconsulta=models.fields.AutoField(primary_key=True)
-    motifdeconsultation=models.fields.CharField(max_length=254)
-    prescripteur_consultation=models.fields.CharField(max_length=100)
-    debut_signe=models.fields.CharField(max_length=100)
-    signe_digestifs=models.fields.CharField(max_length=100)
-    signe_extra_digestif=models.fields.CharField(max_length=100)
-    signe_asso_gene=models.fields.CharField(max_length=100)
-    nombredeverre_alcool=models.fields.IntegerField(null=True)
-    nombrepaquettabac=models.fields.IntegerField(null=True)
-    medoc_en_cours=models.fields.CharField(max_length=253)
-    prise_therap_tarditionnelle=models.fields.CharField(max_length=10)
+    motifdeconsultation=models.fields.CharField(max_length=254, null=True, blank=True)
+    prescripteur_consultation=models.fields.CharField(max_length=100, null=True, blank=True)
+    debut_signe=models.fields.CharField(max_length=100, null=True, blank=True)
+    signe_digestifs=models.fields.CharField(max_length=100, null=True, blank=True)
+    signe_extra_digestif=models.fields.CharField(max_length=100, null=True, blank=True)
+    signe_asso_gene=models.fields.CharField(max_length=100, null=True, blank=True)
+    nombredeverre_alcool=models.fields.IntegerField(null=True, null=True, blank=True)
+    nombrepaquettabac=models.fields.IntegerField(null=True, null=True, blank=True)
+    medoc_en_cours=models.fields.CharField(max_length=253, null=True, blank=True)
+    prise_therap_tarditionnelle=models.fields.CharField(max_length=10, null=True, blank=True)
     MAYBECHOICE=(
         ('o','oui'),
         ('n','non'),
@@ -398,10 +398,10 @@ class consultation(models.Model): #modifie
     acanti_vhd=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
     serologie_retrovi=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
     transaminase=models.fields.CharField(max_length=1,choices=MAYBECHOICE)
-    histoiredemaladie=models.fields.CharField(max_length=254)
+    histoiredemaladie=models.fields.CharField(max_length=254,null=True, blank=True)
     date= models.fields.DateTimeField(default=datetime.now)                                                                                
-    resultat=models.fields.CharField(max_length=254)
-    renseignementclinic=models.fields.CharField(max_length=254)
+    resultat=models.fields.CharField(max_length=254, null=True, blank=True)
+    renseignementclinic=models.fields.CharField(max_length=254, null=True, blank=True)
     patient=models.ForeignKey(patient, on_delete=models.CASCADE,null=False) 
     personnel_soignant=models.ForeignKey(personnel_soignant, on_delete=models.CASCADE)
     def __str__(self):
@@ -436,32 +436,59 @@ class categorielit(models.Model):
 
 
 
-class sortie(models.Model):
+class sortie(models.Model):#migration
     refsortie=models.fields.AutoField(primary_key=True)
-    datesortie=models.fields.DateField()
+    datesortie=models.fields.DateField(null=True, blank=True)
+    MAYBECHOICE1=(
+        ('déces','déces'),
+        ('fuite','fuite'),
+        ('guérit','guérit'),
+    )
+    motifsortie=models.fields.CharField(max_length=10,choices=MAYBECHOICE1)
+    prochaineconsultation=models.fields.DateField()
     patient=models.ForeignKey(patient, on_delete=models.CASCADE) 
                                                                                    
     def __str__(self):
-        return f'{self.refsortie} {self.datesortie} {self.patient}'
+        return f'{self.refsortie} {self.datesortie} {self.patient} {self.motifsortie} {self.prochaineconsultation} '
     
 
 
 class facture(models.Model):
     idfact=models.fields.AutoField(primary_key=True)
-    numerofact=models.fields.PositiveIntegerField(null=False)
+    numerofact=models.fields.PositiveIntegerField(null=True, blank=True)
     montantpaye=models.fields.PositiveIntegerField(null=False)
     date= models.fields.DateTimeField(default=datetime.now)
     patient=models.ForeignKey(patient, on_delete=models.CASCADE)                                                                              
     def __str__(self):
         return f'{self.idfact} {self.numerofact} {self.montantpaye} {self.date} {self.patient}'
     
-class medicament(models.Model):
+class medicament(models.Model):#migration
     idmedicament=models.fields.AutoField(primary_key=True)
-    nommedicament=models.fields.CharField(max_length=100)
-    dosage=models.fields.CharField( max_length=100)
-    date= models.fields.DateTimeField(default=datetime.now)                                                                                
+    MAYBECHOICE1=(
+        ('TDF','TDF') 
+        ('TAF','TAF')
+        ('Entecavir','Entecavir')
+        ('Lamivudine','Lamivudine')
+        (' Adéfovir',' Adéfovir')
+        ('Telbivudine','Telbivudine')
+        ('Interferon pegylé','Interferon pegylé')
+        ('Interféron pégylé','Interféron pégylé')
+
+    )
+    nommedicament=models.fields.CharField(max_length=100,choices=MAYBECHOICE1)
+    
+    MAYBECHOICE2=(
+        ('300 mg/j','300 mg/j')
+        ('25 mg/j','25 mg/j')
+        ('0.5 mg/j','0.5 mg/j')
+        ('100 mg/j','100 mg/j')
+        ('600 mg/j','600 mg/j')
+        ('180 mg/semaine','180 mg/semaine')
+    )
+    dosage=models.fields.CharField(max_length=100,choices=MAYBECHOICE2)
+    dateprescription= models.fields.DateTimeField(default=datetime.now)                                                                                
     def __str__(self):
-        return f'{self.idmedicament} {self.nommedicament} {self. dosage} {self.date}'
+        return f'{self.idmedicament} {self.nommedicament} {self. dosage} {self.dateprescription}'
 #fin class sans clé secondaire
 
 #debut class avec clé secondaire
@@ -496,7 +523,7 @@ class ordonnance(models.Model):
 class ordonnancemedicament(models.Model):# nouvel ajout c'est la table de liaison deordonnance et medicament
     ordonnance = models.ForeignKey(ordonnance, on_delete=models.CASCADE)
     medicament = models.ForeignKey(medicament, on_delete=models.CASCADE)
-    quantite = models.PositiveIntegerField()
+    quantite = models.PositiveIntegerField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.medicament} x {self.quantite} dans {self.ordonnance}"
@@ -504,8 +531,8 @@ class ordonnancemedicament(models.Model):# nouvel ajout c'est la table de liaiso
 
 class bilan_imagerie(models.Model):
     numbilimg=models.fields.AutoField(primary_key=True)
-    echographie_ou_radiograpgie=models.FileField(upload_to="uploads/")
-    renseignementclinique=models.fields.CharField(max_length=254)
+    echographie_ou_radiograpgie=models.FileField(upload_to="uploads/", null=True, blank=True)
+    renseignementclinique=models.fields.CharField(max_length=254,null=True, blank=True)
     consultation=models.ForeignKey(consultation, on_delete=models.CASCADE) 
     def __str__(self):
         return f'{self.numbilimg} {self.echographie_ou_radiograpgie} {self.renseignementclinique} {self.consultation}'
@@ -514,6 +541,15 @@ class bilan_imagerie(models.Model):
 
 class bilan_biologique(models.Model):
     numbilanbio=models.fields.AutoField(primary_key=True)
+    MAYBECHOICE1=(
+        ('300 mg/j','300 mg/j')
+        ('25 mg/j','25 mg/j')
+        ('0.5 mg/j','0.5 mg/j')
+        ('100 mg/j','100 mg/j')
+        ('600 mg/j','600 mg/j')
+        ('180 mg/semaine','180 mg/semaine')
+    )
+    marqueurVir=
     date= models.fields.DateTimeField(default=datetime.now)                                                                                
     consultation=models.ForeignKey(consultation, on_delete=models.CASCADE)
     def __str__(self):

@@ -14,22 +14,24 @@ import os
 from pathlib import Path
 import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-#BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR =os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-env = environ.Env()
-environ.Env.read_env()
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
+env = environ.Env()
+environ.Env.read_env()
 
-SECRET_KEY = env("SECRET_KEY")
-DEBUG = env("DEBUG")
-ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS").split(" ")
-ALLOWED_ORIGINS = env("ALLOWED_ORIGINS").split(" ")
-CSRF_TRUSTED_ORIGINS = ALLOWED_ORIGINS.copy()
-BASE_URL = env("BASE_URL")
-CRSF_COOKIE_SECURE = int(env("CRSF_COOKIE_SECURE", default=0))
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-lf4@t0jrz1am7ojckx_9^-8a)c#m)al8fxlg22v@$fw)ya7hx-'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -75,15 +77,14 @@ WSGI_APPLICATION = 'msp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': env('DB_ENGINE'),
-        'NAME': env('DB_NAME'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':env('DB_NAME'),
         'USER': env('DB_USER'),
         'PASSWORD':env('PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT':env('DB_PORT'),
+        'HOST':env('DB_HOST'),
+        'PORT': '5432'
     }
 }
 
@@ -123,11 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'appli_web')
-]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#STATIC_ROOT = os.path.join(BASE_DIR, 'appli_web')
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'static')
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-

@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin # type: ignore
 from django.urls import path # type: ignore
 from appli_web import views  # type: ignore
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('bands/',views.band_list),
@@ -26,6 +27,8 @@ urlpatterns = [
     path ('test/',views.test),
     #pour ma bd
     path ('connexion/',views.connexion,name='connexion'),
+    path('create-folder/', views.create_folder, name='create_folder'),
+    
     #fin
     
 ]
