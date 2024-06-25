@@ -35,36 +35,101 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-    <body>
-        <div class="connect-container align-content-stretch d-flex flex-wrap">
-            <div class="page-sidebar">
-                <div class="logo-box"><a href="#" class="logo-text">NOM</a><a href="#" id="sidebar-close"></a> <a href="#" id="sidebar-state"></a></div>
-                <div class="page-sidebar-inner slimscroll">
-                    <ul class="accordion-menu">
-                        <li>
-                            <a href="{% url 'create_folder' %}" class="active"></i>CREER DOSSIER PATIENT</a>
-                        </li>
-                        <li>
-                            <a href="#">RENDEZ-VOUS</a>
-                        </li>
-                        <li>
-                            <a href="#">MEDECIN DISPONIBLE</a>
-                        </li>
-                        <li>
-                            <a href="#">DECONNEXION</a>
-                        </li>
-                        <li>
-                            <a href="#">RECHERCHER UN DOSSIER PATTIENT</a>
-                        </li>
-                    </ul>
+        <body>
+            <!--debut menu-->
+            <div class="connect-container align-content-stretch d-flex flex-wrap">
+                <div class="page-sidebar">
+                    <div class="logo-box"><a href="#" class="logo-text">Nom</a><a href="#" id="sidebar-close"></a></div>
+                    <div class="page-sidebar-inner slimscroll">
+                        <ul class="accordion-menu">
+                            <li>
+                                <a href="#"><i class="material-icons">search</i>RECHERCHE DOSSIER PATIENT</a>
+                            </li>
+
+                            <li>
+                                <a  href="#" class="active"><i class="material-icons-outlined"></i>RENDEZ-VOUS</a>
+                            </li>
+                            <li>
+                                <a  href="#"><i class="material-icons-outlined">person-check</i>MEDECIN DISPONIBLE</a>
+                            </li>
+                            
+                            <li>
+                                <a  href="#"><i class="material-icons">logout</i>DECONNEXION</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--fin menu-->
+                <div class="page-container">
+                    <div class="page-header">
+                        <nav class="navbar navbar-expand">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <ul class="navbar-nav">
+                                <li class="nav-item small-screens-sidebar-link">
+                                    <a href="#" class="nav-link"><i class="material-icons-outlined">menu</i></a>
+                                </li>
+                            <!--profil image-->
+                                <li class="nav-item nav-profile dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="../../assets/images/avatars/profile-image-1.png" alt="profile image">
+                                        <span>Nancy Moore</span><i class="material-icons dropdown-icon">keyboard_arrow_down</i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Calendar<span class="badge badge-pill badge-info float-right">2</span></a>
+                                        <a class="dropdown-item" href="#">Settings &amp Privacy</a>
+                                        <a class="dropdown-item" href="#">Switch Account</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Log out</a>
+                                    </div>
+                                </li>
+                                <!--profil image fin-->
+                            </ul>
+                             <!--rechercher-->
+                        <div class="collapse navbar-collapse" id="navbarNav"></div>
+                            <div class="navbar-search">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" name="search" id="nav-search" placeholder="Search...">
+                                    </div>
+                                </form>
+                            </div>
+                       
+                        <!--rechercher fin-->
+                        </nav>
+                    
+                    </div>
+                    <div class="page-content">
+                        
+                        <div class="main-wrapper">
+                            <!--<div class="row">
+                                <div class="col-md-12">
+                                    <div class="page-title">
+                                        <p class="page-desc">Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.</p>
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="row">
+                                <div class="col-xl">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            {% block tempcontenu %} {% endblock%}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   <!-- <div class="page-footer">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="footer-text">2019 © stacks</span>
+                            </div>
+                        </div>
+                    </div>-->
                 </div>
             </div>
-            <div class="page-container">
-                <div class="page-header">
-                    {% block tempcontenu %} {% endblock %}
-                </div>
-            </div>
-        </div>
         <!-- Javascripts -->
         <script src="{% static 'appli_web/assets/css/jquery-3.4.1.min.js' %} "></script>
         <script src="{% static 'appli_web/assets/css/popper.min.js' %}"></script>

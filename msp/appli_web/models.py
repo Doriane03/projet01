@@ -35,12 +35,18 @@ class listing(models.Model):
     
     #class de mon projet de stage 
 #class sans clé secondaire
+class categorie(models.Model):
+    refcat=models.fields.AutoField(primary_key=True)
+    numcat=models.fields.PositiveIntegerField(null=False)
+    def __str__(self):
+        return f'{self.refcat} {self.numcat}'
 class lit(models.Model):
     reflit=models.fields.AutoField(primary_key=True)
     numlit=models.fields.PositiveIntegerField(null=False)
+    categorie =models.ForeignKey(categorie, on_delete=models.CASCADE)
     def __str__(self):
-        return f'{self.reflit} {self.numlit}'
-    
+        return f'{self.reflit} {self.numlit} {self.categorie}'
+        
 class patient(models.Model): #modifie
     idpatient=models.fields.AutoField(primary_key=True)
     nom=models.fields.CharField(max_length=120)
@@ -385,8 +391,8 @@ class consultation(models.Model): #modifie
     signe_digestifs=models.fields.CharField(max_length=100, null=True, blank=True)
     signe_extra_digestif=models.fields.CharField(max_length=100, null=True, blank=True)
     signe_asso_gene=models.fields.CharField(max_length=100, null=True, blank=True)
-    nombredeverre_alcool=models.fields.IntegerField(null=True, null=True, blank=True)
-    nombrepaquettabac=models.fields.IntegerField(null=True, null=True, blank=True)
+    nombredeverre_alcool=models.fields.IntegerField(null=True,blank=True)
+    nombrepaquettabac=models.fields.IntegerField(null=True, blank=True)
     medoc_en_cours=models.fields.CharField(max_length=253, null=True, blank=True)
     prise_therap_tarditionnelle=models.fields.CharField(max_length=10, null=True, blank=True)
     MAYBECHOICE=(
@@ -418,24 +424,6 @@ class hospitalisation(models.Model):
     def __str__(self):
         return f'{self.idhospitalisation} {self.service} {self.datehospitalisation} {self.consultation}'
 
-   
-class categorie(models.Model):
-    refcat=models.fields.AutoField(primary_key=True)
-    numcat=models.fields.PositiveIntegerField(null=False)
-    se_trouver=models.ManyToManyField(lit,through="categorielit")
-    def __str__(self):
-        return f'{self.refcat} {self.numcat}'
-
-class categorielit(models.Model):
-    lit=models.ForeignKey(lit, on_delete=models.CASCADE)
-    categorie=models.ForeignKey(categorie, on_delete=models.CASCADE)
-    nblit=models.PositiveIntegerField()
-
-    def __str__(self):
-        return f"{self.lit} x {self.nblit} dans {self.categorie}"
-
-
-
 class sortie(models.Model):#migration
     refsortie=models.fields.AutoField(primary_key=True)
     datesortie=models.fields.DateField(null=True, blank=True)
@@ -465,25 +453,25 @@ class facture(models.Model):
 class medicament(models.Model):#migration
     idmedicament=models.fields.AutoField(primary_key=True)
     MAYBECHOICE1=(
-        ('TDF','TDF') 
-        ('TAF','TAF')
-        ('Entecavir','Entecavir')
-        ('Lamivudine','Lamivudine')
-        (' Adéfovir',' Adéfovir')
-        ('Telbivudine','Telbivudine')
-        ('Interferon pegylé','Interferon pegylé')
-        ('Interféron pégylé','Interféron pégylé')
+        ('TDF','TDF') ,
+        ('TAF','TAF'),
+        ('Entecavir','Entecavir'),
+        ('Lamivudine','Lamivudine'),
+        ('Adéfovir',' Adéfovir'),
+        ('Telbivudine','Telbivudine'),
+        ('Interferon pegylé','Interferon pegylé'),
+        ('Interféron pégylé','Interféron pégylé'),
 
     )
     nommedicament=models.fields.CharField(max_length=100,choices=MAYBECHOICE1)
     
     MAYBECHOICE2=(
-        ('300 mg/j','300 mg/j')
-        ('25 mg/j','25 mg/j')
-        ('0.5 mg/j','0.5 mg/j')
-        ('100 mg/j','100 mg/j')
-        ('600 mg/j','600 mg/j')
-        ('180 mg/semaine','180 mg/semaine')
+        ('300 mg/j','300 mg/j'),
+        ('25 mg/j','25 mg/j'),
+        ('0.5 mg/j','0.5 mg/j'),
+        ('100 mg/j','100 mg/j'),
+        ('600 mg/j','600 mg/j'),
+        ('180 mg/semaine','180 mg/semaine'),
     )
     dosage=models.fields.CharField(max_length=100,choices=MAYBECHOICE2)
     dateprescription= models.fields.DateTimeField(default=datetime.now)                                                                                
@@ -542,17 +530,31 @@ class bilan_imagerie(models.Model):
 class bilan_biologique(models.Model):
     numbilanbio=models.fields.AutoField(primary_key=True)
     MAYBECHOICE1=(
-        ('300 mg/j','300 mg/j')
-        ('25 mg/j','25 mg/j')
-        ('0.5 mg/j','0.5 mg/j')
-        ('100 mg/j','100 mg/j')
-        ('600 mg/j','600 mg/j')
-        ('180 mg/semaine','180 mg/semaine')
+        ('Sérologie rétroviral','Sérologie rétroviral'),
+        ('IgG anti VHE ','IgG anti VHE '),
+        ('IgM anti VHE ','IgM anti VHE '),
+        ('Ac anti VHD ','Ac anti VHD '),
+        ('Ac anti HBe ','Ac anti HBe '),
+        ('Ag HBe ','Ag HBe '),
     )
-    marqueurVir=
-    date= models.fields.DateTimeField(default=datetime.now)                                                                                
+    marqueurVir=models.fields.CharField(max_length=100,choices=MAYBECHOICE1)
+    MAYBECHOICE2=(
+        ('positif','positif'),
+        ('négatif ','négatif '),
+    )
+    resultat=models.fields.CharField(max_length=100,choices=MAYBECHOICE2)
+    
+    MAYBECHOICE3=(
+        ('UI/ ml  ','UI/ ml'),
+        ('mmol/ l','mmol/ l'),
+        ('g/l  ','g/l'),
+        ('/mm3','/mm3'),
+    )
+    unite=models.fields.CharField(max_length=100,choices=MAYBECHOICE3)
+    datereceptionechantillon= models.fields.DateTimeField(null=True, blank=True) 
+    dateremiseresultat= models.fields.DateTimeField(null=True, blank=True)                                                                               
     consultation=models.ForeignKey(consultation, on_delete=models.CASCADE)
     def __str__(self):
-        return f'{self.numbilanbio} {self.date} {self.consultation}'
+        return f'{self.numbilanbio} {self.marqueurVir}  {self.resultat} {self. unite} {self.datereceptionechantillon}  {self.dateremiseresultat}{self.consultation}'
 #fin class avec cle secondaire
 # Create your models here.

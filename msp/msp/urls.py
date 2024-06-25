@@ -24,10 +24,10 @@ urlpatterns = [
     path('listings/',views.listing_list,name='listing-list'),
     path('listings/<int:id>/',views.listing_details, name='listing-details'),
     path ('contact/',views.contact,name='contact'),
-    path ('test/',views.test),
+    path ('test/',views.test,name='test'),
     #pour ma bd
     path ('connexion/',views.connexion,name='connexion'),
-    path('create-folder/', views.create_folder, name='create_folder'),
+    #path('create-folder/', views.create_folder, name='create_folder'),
     
     #fin
     

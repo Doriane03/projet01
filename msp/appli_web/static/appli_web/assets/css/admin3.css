@@ -22,7 +22,7 @@ a {
 }
 
 .logo-box a.logo-text {
-    color: #4FAA53;
+    color: #aa8a4f;
 }
 
 .logo-box a.logo-text:hover {
@@ -45,7 +45,7 @@ a {
 
 .accordion-menu > li > a:hover,
 .accordion-menu > li.active-page > a {
-    background: rgba(94, 96, 110, .15);
+    background: rgba(253, 20, 51, 0.15);
     color: #c8d6e6;
 }
 

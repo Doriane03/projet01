@@ -1,6 +1,6 @@
 {% extends 'appli_web/template.html' %}
 {% block tempcontenu %}
-<center><form method="post" action="{% url 'connexion' %}" >
+<center><form method="post" action="" >
     {% csrf_token %}
     <fieldset>
             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email" name="email"/>
