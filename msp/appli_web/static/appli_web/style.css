@@ -29,8 +29,8 @@ form{
         background-repeat: no-repeat;
         background-size: cover;
         opacity: 1;
-  }
-  .text {
+}
+.text {
     font-weight: bold;
     position: absolute;
     top: 50%;
@@ -46,15 +46,16 @@ form{
     justify-content: center;
     background-color:#f8faf9;
     width: 500px;
-  }
- form input{
-    margin-bottom: 10px;
+}
+.forminput{
+    margin:10px;
     display:block;
  }
- form fieldset{
-    border:none;
+
+.formfieldset{
+    border:1px solid black;
  }
-  form a{
+.forma{
     text-decoration: none;
     display:block;
     margin-bottom: 10px;

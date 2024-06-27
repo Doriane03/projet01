@@ -2,11 +2,11 @@
 {% block content %}
 <center><form method="POST" action="{% url 'connexion' %}" >
     {% csrf_token %}
-    <fieldset>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email" name="email"/>
-            <input type="password" class="form-control" id="password" placeholder="Password" name="mdp"/>
-            <input type="submit"  name="connexion"  value="connexion" class="btn btn-primary"/>
-            <a href="#">mot de passe oublié?</a>
+    <fieldset class="fromfieldset">
+            <input type="email"  id="email" aria-describedby="emailHelp" placeholder="email" name="email" class="frominput"/>
+            <input type="password" id="password" placeholder="Password" name="mdp" class="frominput"/>
+            <input type="submit"  name="connexion"  value="connexion" class="btn btn-primary" class="frominput"/>
+            <a href="#" class="forma">mot de passe oublié?</a>
     </fieldset>
 </form>
 </center>
