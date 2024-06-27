@@ -1,0 +1,16 @@
+#celui-ci s affichera lorque le dossier patient sera ceer lors de la validation de contenuTemplate 
+{% extends 'appli_web/template.html' %}
+
+{% block formconstnte %}
+<center><form method="post" action="" >
+    {% csrf_token %}
+    <fieldset>
+            <input type="text"   placeholder="poids" name="poids"/>
+            <input type="text"   placeholder="taille" name="taille"/>
+            <input type="text" placeholder="temperature" name="temperature"/>
+            <input type="submit"  name="valideconstante"  value="Enregister" class="btn btn-primary"/>
+
+    </fieldset>
+</form>
+</center>
+{% endblock %}
