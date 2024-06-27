@@ -1,11 +1,11 @@
 {% extends 'appli_web/head.html' %}
 {% block content %}
-<center><form method="POST" action="{% url 'connexion' %}" >
+<center><form method="POST" action="{% url 'connexion' %}"  class="form">
     {% csrf_token %}
     <fieldset class="fromfieldset">
-            <input type="email"  id="email" aria-describedby="emailHelp" placeholder="email" name="email" class="frominput"/>
-            <input type="password" id="password" placeholder="Password" name="mdp" class="frominput"/>
-            <input type="submit"  name="connexion"  value="connexion" class="btn btn-primary" class="frominput"/>
+            <input type="email"  id="email" aria-describedby="emailHelp" placeholder="email" name="email" class="frominput"/><br/>
+            <input type="password" id="password" placeholder="Password" name="mdp" class="frominput"/><br/>
+            <input type="submit"  name="connexion"  value="connexion" class="btn btn-primary" class="frominput"/><br/>
             <a href="#" class="forma">mot de passe oublié?</a>
     </fieldset>
 </form>
