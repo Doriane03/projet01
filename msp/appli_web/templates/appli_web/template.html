@@ -81,10 +81,6 @@
                                 inputField.style.display = "none"; 
                             break;
                         }
-
-
-
-                     
                     }
                 }
             }
@@ -96,8 +92,8 @@
                     if (affichecheckbox[i].checked) {
                         if (affichecheckbox[i].value=='Autre motif') {
                             inputField.style.display = "block";
-                        }else{
-                            inputField.style.display = "none";
+                        }else if(affichecheckbox[i].value !='Autre motif') {
+                            inputField.style.display="none";
                         }
                         break; // Sortir de la boucle une fois le bouton coché trouvé
                     }

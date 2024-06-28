@@ -67,13 +67,16 @@ float: left;
 .test{
     display:none;
 }
+.divprinc{
+    background-color: white;
 
-.divfrmconsul{
-    border: 1px solid black;
-    background-color:white;
+}
+.div3{
+    display: flex;
+    gap: 3px; 
 }
 
-.divfrmconsul>input[type=text]{
+.div3>input[type=text]{
     width:50%;
 }
 
@@ -81,8 +84,11 @@ float: left;
     float:left;
 }
 
-.divfrmconsul>input[type=radio]{
+.div3>input[type=radio]{
     margin:5px ;
     display:inline-block;
+}
+.div3 > label {
+    margin-bottom: 5px;
 }
 
