@@ -16,7 +16,7 @@
                 var inputField = document.getElementById("signe");
                 for (var i = 0; i < afficheRadio.length; i++) {
                     if (afficheRadio[i].checked) {
-                        switch(){
+                        switch(afficheRadio[i].value){
                             case 'oui1':
                                 inputField.style.display = "block";
                             break;
@@ -27,12 +27,7 @@
 
 
 
-                        if (afficheRadio[i].value=='oui') {
-                            inputField.style.display = "block";
-                        }else if (afficheRadio[i].value=='non') {
-                            inputField.style.display = "none";
-                        }
-                        break; // Sortir de la boucle une fois le bouton coché trouvé
+                     
                     }
                 }
             }
