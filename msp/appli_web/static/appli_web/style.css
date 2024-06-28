@@ -65,5 +65,7 @@ float: left;
 .div2{
   float: right;  
 }
-
+.test{
+    display:none;
+}
 

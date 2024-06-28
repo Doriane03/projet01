@@ -35,11 +35,9 @@
             </div>
              <div>
             <label >signe digestif?</label><br/>
-            <input type="radio"  name="b1"  value="oui" onclick="toggleInput()"/>oui
+            <input type="radio"  name="b1"  value="oui" onclick="toggleInput()" />oui
             <input type="radio"  name="b1"  value="non"/>non<br/>
-            {%if  is_checked ='b1' %}
-            <label for="signe digestif">signe digestif</label><input type="text" id="signe digestif" name="signe_digestifs" class="frominput"/><br/>
-            {%endif%}
+            <label for="signe digestif">signe digestif</label><input type="text" id="signe digestif" name="signe_digestifs" class="test"/><br/>
             </div> 
             <label for="signe extra digestif">signe extradigestif</label><input type="text"  id="signe extra digestif" name="signe_extra_digestif" class="frominput"/><br/>
             <label for="signe asso">signe associe digestif</label><input type="text"  id="signe asso" name="signe_asso_gene" class="frominput"/><br/>
