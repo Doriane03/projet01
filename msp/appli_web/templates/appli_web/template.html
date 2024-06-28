@@ -10,8 +10,8 @@
         
         <!-- Title -->
         <title>Connect - Responsive Admin Dashboard Template</title>
-        <script>G
-            function toggleInput() {
+        <script>
+            function signedigstif() {
                 var afficheRadio= document.getElementsByName('b1');
                 var inputField = document.getElementById("signedigestif");
                 for (var i = 0; i < afficheRadio.length; i++) {
@@ -19,6 +19,40 @@
                         if (afficheRadio[i].value=='oui') {
                             inputField.style.display = "block";
                         }else if (afficheRadio[i].value=='non') {
+                            inputField.style.display = "none";
+                        }
+                        break; // Sortir de la boucle une fois le bouton coché trouvé
+                    }
+                }
+            }
+
+
+            function signeextradigestif() {
+                var afficheRadio= document.getElementsByName('b1signeextradig');
+                var inputField = document.getElementById("signeextradigestif");
+                for (var i = 0; i < afficheRadio.length; i++) {
+                    if (afficheRadio[i].checked) {
+                        if (afficheRadio[i].value=='oui') {
+
+                            inputField.style.display = "block";
+                        }else if (afficheRadio[i].value=='non') {
+                            
+                            inputField.style.display = "none";
+                        }
+                        break; // Sortir de la boucle une fois le bouton coché trouvé
+                    }
+                }
+            }
+
+
+            function pourlecheckbox() {
+                var affichecheckbox= document.getElementsByName('motifdeconsultation[]');
+                var inputField = document.getElementById("motifdeconsultation");
+                for (var i = 0; i < affichecheckbox.length; i++) {
+                    if (affichecheckbox[i].checked) {
+                        if (affichecheckbox[i].value=='Autre motif') {
+                            inputField.style.display = "block";
+                        }else{
                             inputField.style.display = "none";
                         }
                         break; // Sortir de la boucle une fois le bouton coché trouvé

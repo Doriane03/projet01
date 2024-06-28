@@ -16,32 +16,40 @@
             <input type="checkbox"   name="motifdeconsultation[]"  value="" />Ac anti HVC positif  <br/>
             <input type="checkbox"   name="motifdeconsultation[]"  value="" />Ac anti VHD positif et Ag HBs positif  <br/>
             <input type="checkbox"   name="motifdeconsultation[]"  value="" />Interprétation de résultats de dépistage hépatite virale <br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="" /> Autre motif<br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Autre motif" onclick="pourlecheckbox()" /> Autre motif<br/>
+            <input type="text"       name="motifdeconsultation"  placeholder="précisser l'autre motif"  id="motifdeconsultation"  class="test"/><br/>
             </div>
 
             <div>
             <label >prescripteur de la consultation</label><br/>
-            <input type="radio"  name="prescripteur_consultation"  value="Hépato-Gastroentérologue"/>Hépato-Gastroentérologue
-            <input type="radio"  name="prescripteur_consultation"  value="Autre médecin spécialiste"/>Autre médecin spécialiste
-            <input type="radio"  name="prescripteur_consultation"  value="Médecin généraliste"/>Médecin généraliste
-            <input type="radio"  name="prescripteur_consultation"  value="Personnel paramédical (IDE ou Sage-femme)"/>Personnel paramédical (IDE ou Sage-femme)
-            <input type="radio"  name="prescripteur_consultation"  value="Venu  (e)  de lui (elle) même"/>Venu  (e)  de lui (elle) même
+            <input type="radio"  name="prescripteur_consultation"  value="Hépato-Gastroentérologue"/>Hépato-Gastroentérologue<br/>
+            <input type="radio"  name="prescripteur_consultation"  value="Autre médecin spécialiste"/>Autre médecin spécialiste<br/>
+            <input type="radio"  name="prescripteur_consultation"  value="Médecin généraliste"/>Médecin généraliste<br/>
+            <input type="radio"  name="prescripteur_consultation"  value="Personnel paramédical (IDE ou Sage-femme)"/>Personnel paramédical (IDE ou Sage-femme)<br/>
+            <input type="radio"  name="prescripteur_consultation"  value="Venu  (e)  de lui (elle) même"/>Venu  (e)  de lui (elle) même<br/>
             </div>
 
             <div>
-            <label >début de signe</label><br/>
+            <label >début de signe :</label>
             <input type="radio"  name="debut_signe"  value="Inférieur à 6 mois"/>Inférieur à 6 mois
             <input type="radio"  name="debut_signe"  value="Supérieur ou égal à 6 mois"/>Supérieur ou égal à 6 mois
             </div>
 
             <div>
-            <label >signe digestif?</label><br/>
-            <input type="radio"  name="b1"  value="oui" onclick="toggleInput()"/>oui
-            <input type="radio"  name="b1"  value="non" onclick="toggleInput()" class="test"/>non<br/>
+            <label >signe digestif?:</label>
+            <input type="radio"  name="b1"  value="oui" onclick="signedigstif()"/>oui
+            <input type="radio"  name="b1"  value="non" onclick="signedigstif()"/>non<br/>
             <input type="text" id="signedigestif" name="signe_digestifs" placeholder="preciser les signes" class="test"/><br/>
             </div> 
-
-            <label for="signe extra digestif">signe extradigestif</label><input type="text"  id="signe extra digestif" name="signe_extra_digestif" class="frominput"/><br/>
+            
+            <div>
+                <label >signe extradigestif? :</label>
+                <input type="radio"  name="b1signeextradig"  value="oui" onclick="signeextradigestif()"/>oui
+                <input type="radio"  name="b1signeextradig"  value="non" onclick="signeextradigestif()"/>non<br/>
+                <input type="text"  id="signeextradigestif" name="signe_extra_digestif" class="test" placeholder="preciser les signes"/><br/>
+            </div> 
+            
+            
             <label for="signe asso">signe associe digestif</label><input type="text"  id="signe asso" name="signe_asso_gene" class="frominput"/><br/>
             <label for="nombre de verre d'alcool">nombre de verre d'alcool</label><input type="text"  id="nombre de verre d'alcool" name="nombredeverre_alcool" class="frominput"/><br/>
             <label for="nombre de paquet de tabac">nombre de paquet de tabac</label><input type="date"  id="nombre de paquet de tabac" name="nombrepaquettabac" class="frominput"/><br/>
