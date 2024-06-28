@@ -13,13 +13,12 @@
         <script>
             function signedigstif() {
                 var afficheRadio= document.getElementsByName('b1');
-                var inputField = document.getElementById("signe");
                 for (var i = 0; i < afficheRadio.length; i++) {
                     if (afficheRadio[i].checked) {
                         switch(afficheRadio[i].value){
                             case 'oui1':
-                                var inputField = document.getElementById("signedigestifs");
-                                inputField.style.display = "block";
+                            var inputField = document.getElementById("signedigestifs");
+                            inputField.style.display = "block";
                             break;
 
                             case 'oui2':
@@ -40,6 +39,7 @@
                             case 'oui5':
                             var inputField = document.getElementById("nombredepaquetdetabac");
                             inputField.style.display = "block";
+
                             break;
 
                             case 'oui6':
@@ -52,11 +52,33 @@
                             inputField.style.display = "block";
                             break;
 
-                            case 'non':
-                                var inputField1 = document.getElementsByName("signe_digestifs");
-                                var inputField2 = document.getElementsByName("signe_extra_digestif");
-                                inputField1.style.display = "none";
-                                inputField2.style.display = "none";
+                            case 'non1':
+                            var inputField = document.getElementById("signedigestifs");
+                            inputField.style.display = "none"; 
+                            break;
+                            case 'non2':
+                            var inputField = document.getElementById("signeextradigestif");
+                            inputField.style.display = "none"; 
+                            break;
+                            case 'non3':
+                            var inputField = document.getElementById("signeasso");
+                            inputField.style.display = "none"; 
+                            break;
+                            case 'non4':
+                            var inputField = document.getElementById("nombredeverredalcool");
+                            inputField.style.display = "none"; 
+                            break;
+                            case 'non5':
+                            var inputField = document.getElementById("nombredepaquetdetabac");
+                            inputField.style.display = "none"; 
+                            break;
+                            case 'non6':
+                            var inputField = document.getElementById("medocencours");
+                            inputField.style.display = "none"; 
+                            break;
+                            case 'non7':
+                                var inputField = document.getElementById("Bilanbiologiqueanterieur");
+                                inputField.style.display = "none"; 
                             break;
                         }
 

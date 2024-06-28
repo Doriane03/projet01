@@ -3,24 +3,24 @@
 <center><form method="POST" action="">
     {% csrf_token %}
     <fieldset class="fromfieldset">
-            <div>
+            <div class="divfrmconsul">
             <label>motif de consultation</label><br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="Asthénie" />Asthénie <br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="Ictère" />Ictère <br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="Fièvre" />Fièvre <br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="Urines foncées" />Urines foncées<br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="Douleur abdominale" />Douleur abdominale <br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="Anomalies du bilan hépatique" />Anomalies du bilan hépatique<br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="Cytolyse hépatique" />Cytolyse hépatique <br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="AgHBs positif" />AgHBs positif  <br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="Ac anti HVC positif" />Ac anti HVC positif  <br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="Ac anti VHD positif et Ag HBs positif" />Ac anti VHD positif et Ag HBs positif  <br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="Interprétation de résultats de dépistage" />Interprétation de résultats de dépistage hépatite virale <br/>
-            <input type="checkbox"   name="motifdeconsultation[]"  value="Autre motif" onclick="pourlecheckbox()" /> Autre motif<br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Asthénie" /><label>Asthénie</label><br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Ictère" /><label>Ictère</label> <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Fièvre" /><label>Fièvre</label> <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Urines foncées" /><label>Urines foncées</label><br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Douleur abdominale" /><label>Douleur abdominale</label><br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Anomalies du bilan hépatique" /><label>Anomalies du bilan hépatique</label><br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Cytolyse hépatique" /><label>Cytolyse hépatique</label><br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="AgHBs positif" /><label>AgHBs positif</label><br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Ac anti HVC positif" /><label>Ac anti HVC positif  <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Ac anti VHD positif et Ag HBs positif" /><label>Ac anti VHD positif et Ag HBs positif</label><br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Interprétation de résultats de dépistage" /><label>Interprétation de résultats de dépistage hépatite virale</label><br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="Autre motif" onclick="pourlecheckbox()" /><label>Autre motif</label> <br/>
             <input type="text"       name="motifdeconsultation"  placeholder="précisser l'autre motif"  id="motifdeconsultation"  class="test"/><br/>
             </div>
 
-            <div>
+            <div class="divfrmconsul">
             <label >prescripteur de la consultation</label><br/>
             <input type="radio"  name="prescripteur_consultation"  value="Hépato-Gastroentérologue"/>Hépato-Gastroentérologue<br/>
             <input type="radio"  name="prescripteur_consultation"  value="Autre médecin spécialiste"/>Autre médecin spécialiste<br/>
@@ -29,30 +29,30 @@
             <input type="radio"  name="prescripteur_consultation"  value="Venu  (e)  de lui (elle) même"/>Venu  (e)  de lui (elle) même<br/>
             </div>
 
-            <div>
+            <div class="divfrmconsul">
             <label >début de signe :</label>
             <input type="radio"  name="debut_signe"  value="Inférieur à 6 mois"/>Inférieur à 6 mois
             <input type="radio"  name="debut_signe"  value="Supérieur ou égal à 6 mois"/>Supérieur ou égal à 6 mois
             </div>
 
-            <div>
+            <div class="divfrmconsul">
             <label >signe digestif? :</label>
             <input type="radio"  name="b1"  value="oui1" onclick="signedigstif()"/>oui
-            <input type="radio"  name="b1"  value="non" onclick="signedigstif()"/>non<br/>
+            <input type="radio"  name="b1"  value="non1" onclick="signedigstif()"/>non<br/>
             <input type="text" id="signedigestifs" name="signe_digestifs" placeholder="preciser" class="test"/><br/>
             </div> 
             
-            <div>
+            <div class="divfrmconsul">
                 <label >signe extradigestif? :</label>
                 <input type="radio"  name="b1"  value="oui2" onclick="signedigstif()"/>oui
-                <input type="radio"  name="b1"  value="non" onclick="signedigstif()"/>non<br/>
+                <input type="radio"  name="b1"  value="non2" onclick="signedigstif()"/>non<br/>
                 <input type="text"   id="signeextradigestif" name="signe_extra_digestif"  placeholder="preciser" class="test"/><br/>
             </div> 
             
-            <div>
+            <div class="divfrmconsul">
                 <label >signe associé généraux? :</label>
                 <input type="radio"  name="b1"  value="oui3" onclick="signedigstif()"/>oui
-                <input type="radio"  name="b1"  value="non" onclick="signedigstif()"/>non<br/>
+                <input type="radio"  name="b1"  value="non3" onclick="signedigstif()"/>non<br/>
                     <div id="signeasso"   class="test"> 
                         <input type="checkbox"  name="signe_asso_gene[]"  value="Asthénie" />Asthénie <br/>
                         <input type="checkbox"  name="signe_asso_gene[]"  value="Anorexie " />Anorexie <br/>
@@ -61,37 +61,37 @@
                     </div>
             </div> 
             
-            <div>
+            <div class="divfrmconsul">
                 <label >buvez-vous de l'alcol? :</label>
                 <input type="radio"  name="b1"  value="oui4" onclick="signedigstif()"/>oui
-                <input type="radio"  name="b1"  value="non" onclick="signedigstif()"/>non<br/>
+                <input type="radio"  name="b1"  value="non4" onclick="signedigstif()"/>non<br/>
                 <input type="text"  id="nombredeverredalcool" name="nombredeverre_alcool"  class="test" placeholder="preciser le nombre de verre par jour" /><br/>
             </div> 
             
-            <div>
+            <div class="divfrmconsul">
                 <label >prennez-vous du tabac? :</label>
                 <input type="radio"  name="b1"  value="oui5" onclick="signedigstif()"/>oui
-                <input type="radio"  name="b1"  value="non" onclick="signedigstif()"/>non<br/>
+                <input type="radio"  name="b1"  value="non5" onclick="signedigstif()"/>non<br/>
                 <input type="text"  id="nombredepaquetdetabac" name="nombrepaquettabac"  class="test" placeholder="preciser le nombre de paquet par annnée" /><br/>
             </div> 
 
-            <div>
+            <div class="divfrmconsul">
                 <label >prennez-vous des médicaments en ce moment ? :</label>
                 <input type="radio"  name="b1"  value="oui6" onclick="signedigstif()"/>oui
-                <input type="radio"  name="b1"  value="non" onclick="signedigstif()"/>non<br/>
+                <input type="radio"  name="b1"  value="non6" onclick="signedigstif()"/>non<br/>
                 <input type="text"  id="medocencours" name="medoc_en_cours"  class="test" placeholder="preciser les le nom des médicaments" /><br/>
             </div>
             
-            <div>
+            <div class="divfrmconsul">
                 <label >prennez-vous des médicaments traditionnels ? :</label>
                 <input type="radio"  name="prise_therap_tarditionnelle"  value="o" />oui
                 <input type="radio"  name="prise_therap_tarditionnelle"  value="n" />non<br/>
             </div>
 
-            <div>
+            <div class="divfrmconsul">
                 <label >Bilan biologique antérieur à la   consultation initiale :</label>
                 <input type="radio"  name="b1"  value="oui7" onclick="signedigstif()"/>oui
-                <input type="radio"  name="b1"  value="non" onclick="signedigstif()"/>non<br/>
+                <input type="radio"  name="b1"  value="non7" onclick="signedigstif()"/>non<br/>
                 <div id="Bilanbiologiqueanterieur" class="test">
                     <label > aghbs:</label>
                     <input type="radio"  name="aghbs"  value="o" />oui
