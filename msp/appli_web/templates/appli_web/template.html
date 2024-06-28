@@ -18,10 +18,18 @@
                     if (afficheRadio[i].checked) {
                         switch(afficheRadio[i].value){
                             case 'oui1':
+                                var inputField = document.getElementById("signedigestifs");
                                 inputField.style.display = "block";
                             break;
+                            case 'oui2':
+                            var inputField = document.getElementById("signeextradigestif");
+                            inputField.style.display = "block";
+                            break;
                             case 'non':
-                                inputField.style.display = "none";
+                                var inputField1 = document.getElementsByName("signe_digestifs");
+                                var inputField2 = document.getElementsByName("signe_extra_digestif");
+                                inputField1.style.display = "none";
+                                inputField2.style.display = "none";
                             break;
                         }
 
