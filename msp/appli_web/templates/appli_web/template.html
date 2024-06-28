@@ -15,8 +15,9 @@
                 var afficheRadio= document.getElementById("affiche");
                 var inputField = document.getElementById("signedigestif");
                 if (afficheRadio.checked) {
+                    print(afficheRadio.value)
                     inputField.style.display = "block";
-                } else {
+                } else if((afficheRadio.checked)) {
                     inputField.style.display = "none";
                 }
             }
