@@ -90,7 +90,7 @@ def connexion(request):
     return render(request,'appli_web/cnx.html')
 #fin
 def test(request):
-    return render(request,'appli_web/contenuTemplate.html') # je retourne contenu.... pour que ce fichier s'affiche dans le fichier entête template.html
+    return render(request,'appli_web/formconsultation.html') # je retourne contenu.... pour que ce fichier s'affiche dans le fichier entête template.html
 #fin
 
 #def create_folder(request):

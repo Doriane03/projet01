@@ -1,0 +1,85 @@
+{% extends 'appli_web/template.html' %}
+{% block consultationform %}
+<center><form method="POST" action="{% url 'test' %}" name="f">
+    {% csrf_token %}
+    <fieldset class="fromfieldset">
+            <div>
+            <label>motif de consultation</label><br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" />Asthénie <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" />Ictère <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" />Fièvre <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" />Urines foncées<br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" />Douleur abdominale <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" />Anomalies du bilan hépatique<br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" />Cytolyse hépatique <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" />AgHBs positif  <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" />Ac anti HVC positif  <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" />Ac anti VHD positif et Ag HBs positif  <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" />Interprétation de résultats de dépistage hépatite virale <br/>
+            <input type="checkbox"   name="motifdeconsultation[]"  value="" /> Autre motif<br/>
+            </div>
+
+            <div>
+            <label >prescripteur de la consultation</label><br/>
+            <input type="radio"  name="prescripteur_consultation"  value="Hépato-Gastroentérologue"/>Hépato-Gastroentérologue
+            <input type="radio"  name="prescripteur_consultation"  value="Autre médecin spécialiste"/>Autre médecin spécialiste
+            <input type="radio"  name="prescripteur_consultation"  value="Médecin généraliste"/>Médecin généraliste
+            <input type="radio"  name="prescripteur_consultation"  value="Personnel paramédical (IDE ou Sage-femme)"/>Personnel paramédical (IDE ou Sage-femme)
+            <input type="radio"  name="prescripteur_consultation"  value="Venu  (e)  de lui (elle) même"/>Venu  (e)  de lui (elle) même
+            </div>
+
+            <div>
+            <label >début de signe</label><br/>
+            <input type="radio"  name="debut_signe"  value="Inférieur à 6 mois"/>Inférieur à 6 mois
+            <input type="radio"  name="debut_signe"  value="Supérieur ou égal à 6 mois"/>Supérieur ou égal à 6 mois
+            </div>
+             <div>
+            <label >signe digestif?</label><br/>
+            <input type="radio"  name="b1"  value="oui" onclick="toggleInput()"/>oui
+            <input type="radio"  name="b1"  value="non"/>non<br/>
+            {%if  is_checked ='b1' %}
+            <label for="signe digestif">signe digestif</label><input type="text" id="signe digestif" name="signe_digestifs" class="frominput"/><br/>
+            {%endif%}
+            </div> 
+            <label for="signe extra digestif">signe extradigestif</label><input type="text"  id="signe extra digestif" name="signe_extra_digestif" class="frominput"/><br/>
+            <label for="signe asso">signe associe digestif</label><input type="text"  id="signe asso" name="signe_asso_gene" class="frominput"/><br/>
+            <label for="nombre de verre d'alcool">nombre de verre d'alcool</label><input type="text"  id="nombre de verre d'alcool" name="nombredeverre_alcool" class="frominput"/><br/>
+            <label for="nombre de paquet de tabac">nombre de paquet de tabac</label><input type="date"  id="nombre de paquet de tabac" name="nombrepaquettabac" class="frominput"/><br/>
+            <label for="medoc en cours">medicament en cours</label><input type="text" id="medoc en cours" name="medoc_en_cours" class="frominput"/><br/>
+            <label for="prise therap tarditionnelle">thérapie tarditionnelle</label><input type="text"  id="prise therap tarditionnelle" name="prise_therap_tarditionnelle" class="frominput"/><br/>
+
+ aghbs
+    acanti_vhc
+    acanti_vhd
+    serologie_retrovi
+    transaminase
+    histoiredemaladie                                                                          
+    resultat
+    renseignementclinic
+
+            <div>
+            <label >aghbs</label><br/>
+            <input type="radio"  name="aghbs"  value="oui"/>oui
+            <input type="radio"  name="aghbs"  value="non"/>non
+            </div>
+            
+            <div>
+            <label >acanti_vhc</label><br/>
+            <input type="radio"  name="acanti_vhc"  value="oui"/>oui
+            <input type="radio"  name="acanti_vhc"  value="non"/>non
+            </div>
+            
+            <div>
+            <label >acanti_vhc</label><br/>
+            <input type="radio"  name="acanti_vhc"  value="oui"/>oui
+            <input type="radio"  name="acanti_vhc"  value="non"/>non
+            </div>
+
+
+
+            <label for="dsd">début  de signe</label><input type="text"  placeholder="signe asso" name="signe_asso_gene" class="frominput"/><br/>
+            <input type="submit"  name=""  value="Enregistrer" class="btn btn-primary" class="frominput"/><br/>
+    </fieldset>
+</form>
+</center>
+{% endblock %}

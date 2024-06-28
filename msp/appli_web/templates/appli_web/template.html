@@ -10,7 +10,17 @@
         
         <!-- Title -->
         <title>Connect - Responsive Admin Dashboard Template</title>
-
+        <script>
+            function toggleInput() {
+                var radio= document.getElementById("b1");
+                var inputField = document.getElementById("signe_digestifs");
+                if (radio.checked) {
+                    inputField.style.display = "block";
+                } else {
+                    inputField.style.display = "none";
+                }
+            }
+        </script>
         <!-- Styles -->
         <link rel="stylesheet" href="{% static 'appli_web/style.css' %}"/>
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet"/>
@@ -105,6 +115,7 @@
                                 <div class="col-xl">
                                     <div class="card">
                                         <div class="card-body">
+                                            {% block consultationform %} {% endblock%}
                                             {% block tempcontenu %} {% endblock%}
                                         </div>
                                     </div>
