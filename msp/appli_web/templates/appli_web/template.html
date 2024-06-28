@@ -12,13 +12,17 @@
         <title>Connect - Responsive Admin Dashboard Template</title>
         <script>G
             function toggleInput() {
-                var afficheRadio= document.getElementById("affiche");
+                var afficheRadio= document.getElementsByName('b1');
                 var inputField = document.getElementById("signedigestif");
-                if (afficheRadio.checked) {
-                    print(afficheRadio.value)
-                    inputField.style.display = "block";
-                } else if((afficheRadio.checked)) {
-                    inputField.style.display = "none";
+                for (var i = 0; i < afficheRadio.length; i++) {
+                    if (afficheRadio[i].checked) {
+                        if (afficheRadio[i].value== 'oui') {
+                            inputField.style.display = "block";
+                        } else if (afficheRadio[i].value== 'non') {
+                            inputField.style.display = "none";
+                        }
+                        break; // Sortir de la boucle une fois le bouton coché trouvé
+                    }
                 }
             }
         </script>
