@@ -13,9 +13,20 @@
         <script>
             function signedigstif() {
                 var afficheRadio= document.getElementsByName('b1');
-                var inputField = document.getElementById("signedigestif");
+                var inputField = document.getElementById("signe");
                 for (var i = 0; i < afficheRadio.length; i++) {
                     if (afficheRadio[i].checked) {
+                        switch(){
+                            case 'oui1':
+                                inputField.style.display = "block";
+                            break;
+                            case 'non':
+                                inputField.style.display = "none";
+                            break;
+                        }
+
+
+
                         if (afficheRadio[i].value=='oui') {
                             inputField.style.display = "block";
                         }else if (afficheRadio[i].value=='non') {
@@ -25,23 +36,6 @@
                     }
                 }
             }
-
-
-            function signeextradigestif() {
-                var affiche= document.getElementsByName("b1");
-                var inputField = document.getElementById("signeextradigestif");
-                for (var i = 0; i < affiche.length; i++) {
-                    if (affiche[i].checked) {
-                        if (affiche[i].value=='oui') {
-                            inputField.style.display = "block";
-                        }else if (affiche[i].value=='non') {
-                            inputField.style.display = "none";
-                        }
-                        break; // Sortir de la boucle une fois le bouton coché trouvé
-                    }
-                }
-            }
-
 
             function pourlecheckbox() {
                 var affichecheckbox= document.getElementsByName('motifdeconsultation[]');
