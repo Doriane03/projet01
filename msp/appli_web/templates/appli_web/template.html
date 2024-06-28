@@ -28,15 +28,13 @@
 
 
             function signeextradigestif() {
-                var afficheRadio= document.getElementsByName('b1signeextradig');
+                var affiche= document.getElementsByName("b1signeextradig");
                 var inputField = document.getElementById("signeextradigestif");
-                for (var i = 0; i < afficheRadio.length; i++) {
-                    if (afficheRadio[i].checked) {
-                        if (afficheRadio[i].value=='oui') {
-
+                for (var i = 0; i < affiche.length; i++) {
+                    if (affiche[i].checked) {
+                        if (affiche[i].value=='oui') {
                             inputField.style.display = "block";
-                        }else if (afficheRadio[i].value=='non') {
-                            
+                        }else if (affiche[i].value=='non') {
                             inputField.style.display = "none";
                         }
                         break; // Sortir de la boucle une fois le bouton coché trouvé
