@@ -1,13 +1,12 @@
-{% extends 'appli_web/head.html' %}
+{% extends 'listings/head.html' %}
 {% block content %}
-<center><form method="POST" action="{% url 'connexion' %}"  class="form">
+<center><form method="POST" action="{% url 'connexion' %}" >
     {% csrf_token %}
-    <fieldset class="fromfieldset">
-            <input type="email"  id="email" aria-describedby="emailHelp" placeholder="email" name="email" class="frominput"/><br/>
-            <input type="password" id="password" placeholder="Password" name="mdp" class="frominput"/><br/>
-            <input type="submit"  name="connexion"  value="connexion" class="btn btn-primary" class="frominput"/><br/>
-            <a href="#" class="forma">mot de passe oublié?</a>
+    <fieldset class="fieldsetfromcnx">
+            <input type="email"   placeholder="email" name="email" class="inputcontenu"/>
+            <input type="password"  placeholder="Password" name="mdp" class="inputcontenu"/>
+            <input type="submit"  name="connexion"  value="connexion" class="btn btn-primary"/>
+            <a href="#" class="aformcnx">mot de passe oublié?</a>
     </fieldset>
-</form>
-</center>
+</form></center>
 {% endblock %}
