@@ -20,7 +20,7 @@ from django.urls import path # type: ignore
 from appli_web import views  # type: ignore
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('bands/',views.band_list),
+    #path('bands/',views.band_list),
     path('listings/',views.listing_list,name='listing-list'),
     path('listings/<int:id>/',views.listing_details, name='listing-details'),
     path ('contact/',views.contact,name='contact'),

@@ -1,18 +1,15 @@
+{% extends 'appli_web/template.html' %}
 
-    date= models.fields.DateTimeField(default=datetime.now)                                                                                
-    consultation=models.ForeignKey(consultation, on_delete=models.CASCADE) 
-    
-{% extends 'listings/template.html' %}
-
-{% block formconstnte %}
+{% block formdiagnostique %}
 <center>
 <form method="post" action=""  class="formcontenu">
-    {% csrf_token %}
+<div>
+<nav class="divcontenunav">diagnostique</nav>
+</div>
     <fieldset class="fieldsetgd">
-            
-            <input type="text"   placeholder="taille en  cm" name="taille" class="inputcontenu"/>
-            <input type="text" placeholder="température en C°" name="temperature" class="inputcontenu"/>
-            <input type="text"   placeholder="imc kg/m2 " name="imc" class="inputcontenu"/>
+            <input type="text"   placeholder="diagnostique retenu" name="libdiag" class="inputcontenu"/>
+            <input type="text"   placeholder="date" name="date" class="inputcontenu"/>
+            <input type="text" placeholder="consultation" name="consultation" class="inputcontenu"/> <!--on va afficher la consultation en cours et griser le champs et ce formulaire s'affichera apres enregistrement de la consultation -->
             <input type="submit"  name="valideconstante"  value="Enregister" class="btn btn-primary"/>
 
 
