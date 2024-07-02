@@ -335,7 +335,6 @@ font-size:20px;
 
 #left2{
 float:left;
-margin-left:6%;
 }
 #left2>input[type="radio"]{
 width: 20px;  
@@ -345,7 +344,6 @@ height: 20px;
 
 #right2{
 float:right;
-margin-right:24%;
 }
 #right2>input[type="radio"]{
 width: 20px;  
@@ -413,7 +411,6 @@ margin-right:11.5%;
 width: 20px;  
 height: 20px;
 }
-
 
 .test1>input[type="checkbox"]{
  width: 17px;  

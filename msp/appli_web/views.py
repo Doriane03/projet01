@@ -124,7 +124,7 @@ def facture(request):
     return render(request,'appli_web/formfacture.html')
 
 def diagnostique(request):
-    return render(request,'appli_web/formdiagnostiaue.html')
+    return render(request,'appli_web/formdiagnostique.html')
 
 def ordonnance(request):
     return render(request,'appli_web/formordonnance.html') 
