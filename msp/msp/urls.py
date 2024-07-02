@@ -1,4 +1,5 @@
 """
+
 URL configuration for msp project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -17,18 +18,22 @@ Including another URLconf
 from django.contrib import admin # type: ignore
 from django.urls import path # type: ignore
 from appli_web import views  # type: ignore
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('bands/',views.band_list),
+    path('bands/',views.band_list),
     path('listings/',views.listing_list,name='listing-list'),
     path('listings/<int:id>/',views.listing_details, name='listing-details'),
     path ('contact/',views.contact,name='contact'),
-    path ('test/',views.test,name='test'),
+    #pour ma bd
+    path ('donne/',views.donne,name='affiche'),
+    #fin
+    path ('constante/',views.constante,name='constante'),
+    path ('patient/',views.patient,name='patient'),
+     path ('consultation/',views.consultation,name='consultation'),
+    path ('facture/',views.facture,name='facture'),
     #pour ma bd
     path ('connexion/',views.connexion,name='connexion'),
-    #path('create-folder/', views.create_folder, name='create_folder'),
-    
-    #fin
+    path ('diagnostique/',views.diagnostique,name='diagnostique'),
+    path ('ordonnance/',views.ordonnance,name='ordonnance'),
     
 ]

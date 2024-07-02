@@ -51,12 +51,12 @@ from appli_web.forms import cnx_form
                         #</ul>
 #""")
 def listing_list(request):
-    listings=listing.objects.all()
-    return render(request,'appli_web/listing_list.html',context={'listings':listings})
+    appli_web=listing.objects.all()
+    return render(request,'appli_web/listing_list.html',context={'appli_web':appli_web})
 
 def listing_details(request,id):
-    listings=listing.objects.get(id=id)
-    return render(request,'appli_web/listing_details.html', context={ 'listings':listings })
+    appli_web=listing.objects.get(id=id)
+    return render(request,'appli_web/listing_details.html', context={ 'appli_web':appli_web })
 
 def contact(request):
     if request.method =='POST':
@@ -75,6 +75,28 @@ def contact(request):
     return render(request,'appli_web/contact.html',context={'form':form})
 #pour ma bd
 
+def cnx(request):
+    #form=personnel_soignantForm() #pour afficher un formulaire modele
+    if request.method =='POST':
+        email=request.POST['email']
+        mdp=request.POST['mdp']
+        user= authenticate(request, email==email,mdp==mdp)
+        if user is not None:
+            login(request,user)
+            return redirect('appli_web/ok.html')
+        else:
+            messages.error(request,'essaie encore')
+    return render(request,'appli_web/cnx.html')
+#fin
+
+#recuperation de donnees
+
+def donne(request):
+     patients =patient.objects.all()
+     return render(request,'appli_web/ok.html',context={'patients':patients})
+
+
+
 def connexion(request):
        #form=personnel_soignantForm() #pour afficher un formulaire modele
     if  request.method =='POST' :
@@ -89,9 +111,24 @@ def connexion(request):
             return HttpResponse('bonsoir')
     return render(request,'appli_web/cnx.html')
 #fin
-def test(request):
-    return render(request,'appli_web/formconsultation.html') # je retourne contenu.... pour que ce fichier s'affiche dans le fichier entête template.html
+def patient(request):
+    lits = lit.objects.all()
+    return render(request,'appli_web/formpatient.html',context={'lits':lits }) # je retourne contenu.... pour que ce fichier s'affiche dans le fichier entête template.html
 #fin
+def constante(request):
+    return render(request,'appli_web/formconstante.html')
+def consultation(request):
+    return render(request,'appli_web/formconsultation.html')
+
+def facture(request):
+    return render(request,'appli_web/formfacture.html')
+
+def diagnostique(request):
+    return render(request,'appli_web/formdiagnostiaue.html')
+
+def ordonnance(request):
+    return render(request,'appli_web/formordonnance.html') 
+    
 
 #def create_folder(request):
     #desktop_path = Path.home() / 'Desktop' / 'ARCHIVE_DOC_PAT'/ 'PAT9' #ceer le fic avec le nom du patient
