@@ -169,11 +169,11 @@ class antecedant_medical(models.Model):#modifie
         ('n','non'),
     )
     transplanhepatique=models.fields.CharField(max_length=10,choices=MAYBECHOICE16)
-    #MAYBECHOICE17=(
-        #('o','oui'),
-        #('n','non'),
-    #)
-    #autre=models.fields.CharField(max_length=10,choices=MAYBECHOICE17)
+    MAYBECHOICE17=(
+        ('o','oui'),
+        ('n','non'),
+    )
+    autre=models.fields.CharField(max_length=10,choices=MAYBECHOICE17)
     precisionautre=models.fields.CharField(max_length=200,blank=True,null=True)
     date= models.fields.DateTimeField(default=datetime.now)                                                                                
     patient=models.ForeignKey(patient, on_delete=models.CASCADE)
@@ -289,13 +289,6 @@ class antecedant_familial(models.Model):#nouvel ajout
         ('nsp','ne sait pas'),
     ) 
     cpf_COL=models.fields.CharField(max_length=3,choices=MAYBECHOICE9)
-    
-    poids=models.fields.IntegerField(blank=True)
-    taille=models.fields.IntegerField(blank=True)
-    imc=models.fields.IntegerField(blank=True)
-    tension_art=models.fields.IntegerField(blank=True)
-    pouls=models.fields.IntegerField(blank=True)
-    temperature=models.fields.IntegerField(blank=True,null=True)
     conscience=models.fields.CharField(max_length=50,blank=True,null=True)
     statutoms=models.fields.CharField(max_length=50,blank=True,null=True)
     MAYBECHOICE4=(
@@ -330,7 +323,7 @@ class antecedant_familial(models.Model):#nouvel ajout
     date= models.fields.DateTimeField(default=datetime.now) 
     patient=models.ForeignKey(patient, on_delete=models.CASCADE)                                                                          
     def __str__(self):
-        return f'{self.refantfam} {self.hepatie_vir_ASC} {self.cirrhose_ASC} {self.cpf_ASC} {self.hepatie_vir_DSC} {self.cirrhose_DSC} {self.cpf_DSC}  {self.hepatie_vir_COL} {self.cirrhose_COL} {self.cpf_COL} {self.poids} {self.taille} {self.imc} {self.tension_art} {self.pouls} {self.temperature} {self.conscience} {self.statutoms}  {self.hippocraismdigital} {self.oncleblanc} {self.autre} {self.ascite} {self.cvc} {self.splenomegalie} {self.flechehepatique} {self.autresignephysique} {self.patient}'
+        return f'{self.refantfam} {self.hepatie_vir_ASC} {self.cirrhose_ASC} {self.cpf_ASC} {self.hepatie_vir_DSC} {self.cirrhose_DSC} {self.cpf_DSC}  {self.hepatie_vir_COL} {self.cirrhose_COL} {self.cpf_COL}  {self.conscience} {self.statutoms}  {self.hippocraismdigital} {self.oncleblanc} {self.autre} {self.ascite} {self.cvc} {self.splenomegalie} {self.flechehepatique} {self.autresignephysique} {self.patient}'
 
 class pays(models.Model):
     idpays=models.fields.AutoField(primary_key=True)
@@ -486,9 +479,13 @@ class constante(models.Model):
     poids=models.fields.CharField(max_length=30)
     taille=models.fields.CharField(max_length=30)
     temperature=models.fields.CharField(max_length=30)
+    imc=models.fields.CharField(max_length=30)
+    tas=models.fields.CharField(max_length=30)
+    tad=models.fields.CharField(max_length=30)
+    pouls=models.fields.CharField(max_length=30)
     patient=models.ForeignKey(patient, on_delete=models.CASCADE) 
     def __str__(self):
-        return f'{self.refconst} {self.poids} {self.taille} {self.temperature} {self.patient}'
+        return f'{self.refconst} {self.poids} {self.taille} {self.temperature} {self.imc} {self.tas} {self.pouls} {self.patient}'
     
 
 class diagnostique(models.Model):

@@ -82,7 +82,7 @@ class litAdmin(admin.ModelAdmin):
     list_display=("reflit", "numlit", "categorie")# type: ignore
 
 class constanteAdmin(admin.ModelAdmin):
-    list_display=('refconst','poids','taille','temperature') # type: ignore
+    list_display=('refconst','poids','taille','temperature','imc','tas','tad','pouls') # type: ignore
 
 class consultationAdmin(admin.ModelAdmin):
     list_display=('Numconsulta', 'motifdeconsultation', 'prescripteur_consultation', 'debut_signe', 'signe_digestifs', 'signe_extra_digestif', 'signe_asso_gene', 'nombredeverre_alcool', 'nombrepaquettabac', 'medoc_en_cours', 'prise_therap_tarditionnelle', 'aghbs', 'acanti_vhc', 'acanti_vhd', 'serologie_retrovi', 'transaminase', 'histoiredemaladie', 'date', 'resultat', 'renseignementclinic', 'patient', 'personnel_soignant') # type: ignore
@@ -101,7 +101,7 @@ class bilan_biologiqueAdmin(admin.ModelAdmin):
     list_display=('numbilanbio', 'marqueurVir', 'resultat', 'unite', 'datereceptionechantillon',  'dateremiseresultat','consultation') # type: ignore
     
 class antecedant_familialAdmin(admin.ModelAdmin): #nouveau
-    list_display=('refantfam', 'hepatie_vir_ASC', 'cirrhose_ASC', 'cpf_ASC','hepatie_vir_DSC', 'cirrhose_DSC', 'cpf_DSC','hepatie_vir_COL', 'cirrhose_COL', 'cpf_COL', 'poids', 'taille', 'imc', 'tension_art', 'pouls', 'temperature', 'conscience', 'statutoms',  'hippocraismdigital', 'oncleblanc', 'autre', 'ascite', 'cvc', 'splenomegalie', 'flechehepatique', 'autresignephysique','patient')
+    list_display=('refantfam', 'hepatie_vir_ASC', 'cirrhose_ASC', 'cpf_ASC','hepatie_vir_DSC', 'cirrhose_DSC', 'cpf_DSC','hepatie_vir_COL', 'cirrhose_COL', 'cpf_COL','conscience', 'statutoms',  'hippocraismdigital', 'oncleblanc', 'autre', 'ascite', 'cvc', 'splenomegalie', 'flechehepatique', 'autresignephysique','patient')
     
     
 class antecedant_medicalAdmin(admin.ModelAdmin):#nouveau
